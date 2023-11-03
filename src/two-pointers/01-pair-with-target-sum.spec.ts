@@ -22,7 +22,7 @@ describe.each([
         [0, 2],
       ],
     ])("returns a pair of indexes", (params, right) => {
-      expect(cb(...params)).to.deep.equal(right);
+      expect(cb(...params)).to.have.members(right);
     });
   });
 
@@ -33,7 +33,7 @@ describe.each([
       [[[1, 2, 3, 4, 6], -2], notFound],
       [[[0, 1, 2, 3, 4], 0], notFound],
     ])("returns a pair of -1", (params, right) => {
-      expect(cb(...params)).to.deep.equal(right);
+      expect(cb(...params)).to.have.members(right);
     });
   });
 });

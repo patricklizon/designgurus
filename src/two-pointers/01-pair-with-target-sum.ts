@@ -46,7 +46,7 @@ export function pairWithTargetSum1(
     missingValue = target - currentValue;
 
     if (missingValue in dict && dict[missingValue] !== idx) {
-      return [dict[missingValue]!, dict[currentValue]!];
+      return [dict[currentValue]!, dict[missingValue]!];
     }
   }
 
