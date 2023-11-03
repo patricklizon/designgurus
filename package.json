@@ -13,6 +13,7 @@
     "check:types": "tsc -p tsconfig.json --noEmit --skipLibCheck",
     "lint:staged": "lint-staged"
   },
+  "packageManager": "npm@10.1.0",
   "author": "Patryk Lizoń",
   "license": "ISC",
   "devDependencies": {
