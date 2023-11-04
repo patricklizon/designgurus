@@ -1,15 +1,17 @@
 import { describe, expect, it } from "vitest";
-import { shortestDistance } from "./07-shortest-word-distance";
+import { type InputExpectedPairs } from "../utils";
+import * as all from "./07-shortest-word-distance";
 
-type InputExpectedPairs = [
-  input: [ws: string[], a: string, b: string],
-  expected: number
-];
+const fns = Object.values(all);
+const solutions = fns.map((cb) => [cb.name, cb] as const);
 
-describe.each([[1, shortestDistance]])("solution %s", (_, cb) => {
+type Fn = (typeof solutions)[0][1];
+type TestCases = InputExpectedPairs<Fn>;
+
+describe.each(solutions)("%s", (_, cb) => {
   describe("when words are in array", () => {
     describe("and are unique", () => {
-      it.each<InputExpectedPairs>([
+      it.each<TestCases>([
         [[["a", "b", "c", "d", "e"], "a", "e"], 4],
         [
           [
@@ -35,7 +37,7 @@ describe.each([[1, shortestDistance]])("solution %s", (_, cb) => {
     });
 
     describe("and occurs more than once", () => {
-      it.each<InputExpectedPairs>([
+      it.each<TestCases>([
         [
           [
             ["repeated", "words", "in", "the", "array", "words"],
@@ -47,20 +49,20 @@ describe.each([[1, shortestDistance]])("solution %s", (_, cb) => {
         [[["a", "c", "a", "b", "b", "a"], "a", "b"], 1],
         [[["a", "c", "d", "b", "a"], "a", "b"], 1],
       ])("returns correct distance", (params, right) => {
-        expect(cb(...params)).to.equal(right);
+        expect(cb.apply(null, params)).to.deep.equal(right);
       });
     });
   });
 
   describe("when words are not in the array", () => {
     it("returns -1", () => {
-      expect(shortestDistance(["a"], "x", "c")).to.be.equal(-1);
+      expect(cb(["a"], "x", "c")).to.be.equal(-1);
     });
   });
 
   describe("when only one word is in the array", () => {
     it("returns -1", () => {
-      expect(shortestDistance(["a"], "a", "c")).to.be.equal(-1);
+      expect(cb(["a"], "a", "c")).to.be.equal(-1);
     });
   });
 });
