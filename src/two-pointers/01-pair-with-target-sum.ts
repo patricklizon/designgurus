@@ -27,6 +27,7 @@ export function pairWithTargetSum0(
 
   return [-1, -1];
 }
+
 /**
  * Solution with hash map
  */
