@@ -1,4 +1,4 @@
-# problem-solving-env &middot; ![test workflow](https://github.com/patricklizon/problem-solving-env/actions/workflows/test.yml/badge.svg?event=push)
+# design gurus solutions &middot; ![test workflow](https://github.com/patricklizon/problem-solving-env/actions/workflows/test.yml/badge.svg?event=push)
 
 Simple environment for solving coding challenges.
 
