@@ -10,7 +10,7 @@ type TestCases = InputExpectedPairs<Fn>;
 
 describe.each(solutions)("%s", (_, cb) => {
   describe("when passed array of numbers forms triplets fulfilling requirements", () => {
-    it.only.each<TestCases>([
+    it.each<TestCases>([
       [[[-1, 0, 2, 3], 3], 2],
       [[[-1, 4, 2, 1, 3], 5], 4],
     ])("returns correct count", (params, right) => {
